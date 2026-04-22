@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>DzShow</title>
@@ -8,94 +8,53 @@
     <link rel="stylesheet" href="./css/pages/movieInfo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-      body { font-family: 'Cairo', sans-serif; }
       .player-wrapper {
-        width: 100%;
+        width: 90%;
+        margin: 20px auto;
         aspect-ratio: 16/9;
         background: #000;
         border-radius: 12px;
         overflow: hidden;
-        margin: 20px 0;
       }
       .player-wrapper iframe {
         width: 100%;
         height: 100%;
         border: none;
       }
-      .movie-Info {
-        display: flex;
-        gap: 2rem;
-        padding: 2rem;
-        flex-wrap: wrap;
-      }
-      .imgs-container img {
-        width: 250px;
-        border-radius: 12px;
-      }
-      .details {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        color: #fff;
-        font-size: 1rem;
-      }
-      .film-title {
-        font-size: 2rem;
-        font-weight: 900;
-        color: #f5c842;
-      }
-      .description {
-        color: #ccc;
-        line-height: 1.8;
-        max-width: 600px;
-      }
+      .hide { display: none !important; }
     </style>
 </head>
 <body>
-
-  <header>
-    <a href="index.html" class="logo">
-      🎬 <span>DzShow</span>
-    </a>
-    <div class="search-container">
-      <input type="text" class="search-bar" placeholder="ابحث عن فيلم...">
-      <button type="submit" class="search-btn">بحث</button>
-    </div>
-    <ul class="navbar">
-      <li><a href="index.html">الرئيسية</a></li>
-      <li><a href="index.html">أفلام</a></li>
-    </ul>
-  </header>
-
-  <div class="container">
-    <div class="movie-Info">
-      <div class="imgs-container">
-        <img id="movie-poster" src="" alt="poster"/>
+    <header>
+      <a href="index.html" class="logo">
+          <i class='bx bxs-movie'></i><span>D</span>zShow
+      </a>
+      <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search for a movie...">
+        <button type="submit" class="search-btn">Search</button>
       </div>
-      <div class="details">
-        <div>التقييم: <span id="movie-rating"></span></div>
-        <div>سنة الإنتاج: <span id="movie-year"></span></div>
-        <div>المدة: <span id="movie-duration"></span></div>
+      <div class="img-menu" id="menu-icon">
+        <img src="imgs/dashboard.png" alt="Menu">
       </div>
-      <div class="Info">
-        <h1 class="film-title" id="movie-title"></h1>
-        <p class="description" id="movie-desc"></p>
-      </div>
-    </div>
+      <ul class="navbar">
+          <li><a href="index.html" class="home-active">Home</a></li>
+          <li><a href="index.html">Movies</a></li>
+      </ul>
+    </header>
 
-    <!-- المشغل -->
-    <div class="player-wrapper">
-      <iframe id="moviePlayer" src="" allowfullscreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-      </iframe>
-    </div>
+  <div class="container"></div>
+
+  <!-- مشغل الفيلم -->
+  <div class="player-wrapper">
+    <iframe id="moviePlayer" src="" allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+    </iframe>
   </div>
 
 <script src="js/movieInfo.js" type="module"></script>
 <script>
-  // تشغيل الفيلم تلقائياً
   const params = new URLSearchParams(window.location.search);
   const movieId = params.get('id');
   if (movieId) {
